@@ -1,29 +1,10 @@
 # Biome.js Dateinamenskonventionen
 
-Diese Dokumentation enthält die wichtigsten Regeln für Dateinamen in Biome.js Projekten.
+## Regel: useFilenamingConvention
 
-## Die Regel `use-filenaming-convention`
+Diese Biome-Regel ist inspiriert von der `filename-case` Regel aus eslint-plugin-unicorn. Sie stellt sicher, dass Dateien nach bestimmten Konventionen benannt werden.
 
-Diese Regel stellt sicher, dass Dateien nach bestimmten Konventionen benannt werden.
-
-### Standardkonfiguration
-
-```json
-{
-  "filenaming": {
-    "format": "kebab-case"
-  }
-}
-```
-
-### Unterstützte Formate
-
-- `kebab-case`: Wörter durch Bindestriche getrennt (z.B. `my-component.tsx`)
-- `snake_case`: Wörter durch Unterstriche getrennt (z.B. `my_component.tsx`)
-- `camelCase`: Wörter beginnen mit Großbuchstaben, erster Buchstabe klein (z.B. `myComponent.tsx`)
-- `PascalCase`: Alle Wörter beginnen mit Großbuchstaben (z.B. `MyComponent.tsx`)
-
-### Beispiel für biome.json Konfiguration
+### Konfiguration in biome.json
 
 ```json
 {
@@ -41,6 +22,19 @@ Diese Regel stellt sicher, dass Dateien nach bestimmten Konventionen benannt wer
   }
 }
 ```
+
+### Unterstützte Formate
+
+- `kebab-case`: Wörter durch Bindestriche getrennt (z.B. `my-component.tsx`)
+- `snake_case`: Wörter durch Unterstriche getrennt (z.B. `my_component.tsx`)
+- `camelCase`: Wörter beginnen mit Großbuchstaben, erster Buchstabe klein (z.B. `myComponent.tsx`)
+- `PascalCase`: Alle Wörter beginnen mit Großbuchstaben (z.B. `MyComponent.tsx`)
+
+## Vergleich mit ESLint Unicorn
+
+| ESLint Unicorn Rule | Biome Rule |
+|-------------------|------------|
+| filename-case | useFilenamingConvention |
 
 ## Tipps zur Verwendung
 
