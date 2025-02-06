@@ -2,7 +2,7 @@
 
 ## Regel: useFilenamingConvention
 
-Diese Biome-Regel ist inspiriert von der `filename-case` Regel aus eslint-plugin-unicorn. Sie stellt sicher, dass Dateien nach bestimmten Konventionen benannt werden.
+Diese Biome-Regel überprüft die Namenskonventionen von Dateien. Sie entspricht der `filename-case` Regel aus eslint-plugin-unicorn.
 
 ### Konfiguration in biome.json
 
@@ -10,11 +10,27 @@ Diese Biome-Regel ist inspiriert von der `filename-case` Regel aus eslint-plugin
 {
   "linter": {
     "rules": {
-      "correctness": {
+      "style": {
+        "useFilenamingConvention": {
+          "level": "error"
+        }
+      }
+    }
+  }
+}
+```
+
+Mit benutzerdefinierten Optionen:
+
+```json
+{
+  "linter": {
+    "rules": {
+      "style": {
         "useFilenamingConvention": {
           "level": "error",
           "options": {
-            "format": "kebab-case"
+            "format": ["camelCase", "kebab-case"]
           }
         }
       }
@@ -25,29 +41,34 @@ Diese Biome-Regel ist inspiriert von der `filename-case` Regel aus eslint-plugin
 
 ### Unterstützte Formate
 
-- `kebab-case`: Wörter durch Bindestriche getrennt (z.B. `my-component.tsx`)
-- `snake_case`: Wörter durch Unterstriche getrennt (z.B. `my_component.tsx`)
-- `camelCase`: Wörter beginnen mit Großbuchstaben, erster Buchstabe klein (z.B. `myComponent.tsx`)
-- `PascalCase`: Alle Wörter beginnen mit Großbuchstaben (z.B. `MyComponent.tsx`)
+Die folgenden Formate werden unterstützt:
+- `camelCase`: myComponent.js
+- `kebab-case`: my-component.js
+- `snake_case`: my_component.js
+- `pascalCase`: MyComponent.js
 
-## Vergleich mit ESLint Unicorn
+### Spezielle Dateinamen
+- Dateien können mit einem Punkt oder Pluszeichen beginnen: `.filename.js`, `+filename.js`
+- Präfixe und Suffixe mit Unterstrichen sind erlaubt: `__filename__.js`, `.__filename__.js`
+- Das Pluszeichen-Präfix wird von Frameworks wie SvelteKit und Vike verwendet
 
-| ESLint Unicorn Rule | Biome Rule |
-|-------------------|------------|
-| filename-case | useFilenamingConvention |
+### Vergleich mit ESLint Unicorn
 
-## Tipps zur Verwendung
+| ESLint Unicorn | Biome | Beschreibung |
+|----------------|-------|--------------|
+| filename-case | useFilenamingConvention | Erzwingt eine konsistente Namensgebung für Dateien |
 
-1. Wählen Sie ein Format und bleiben Sie dabei konsistent
-2. Kebab-case ist der Standard und wird häufig in Web-Projekten verwendet
-3. PascalCase wird oft für React-Komponenten verwendet
-4. Die Regel kann pro Projektordner anders konfiguriert werden
+## Standardverhalten
+
+- Die Regel prüft standardmäßig auf `kebab-case`
+- Mehrere Formate können in den Optionen angegeben werden
+- Die Regel befindet sich in der Kategorie "style"
 
 ## Quick Reference
 
-| Format     | Beispiel        | Typische Verwendung    |
-|------------|-----------------|------------------------|
-| kebab-case | my-component    | Allgemeine Dateien     |
-| PascalCase | MyComponent     | React-Komponenten      |
-| camelCase  | myComponent     | JavaScript-Module      |
-| snake_case | my_component    | Backend-Dateien        |
+| Format     | Beispiel     | Anmerkung |
+|------------|--------------|-----------|
+| kebab-case | my-file.js   | Standard  |
+| camelCase  | myFile.js    | Optional  |
+| snake_case | my_file.js   | Optional  |
+| pascalCase | MyFile.js    | Optional  |
