@@ -6,6 +6,7 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "all": true,
       "style": {
         "useFilenamingConvention": {
           "level": "error",
@@ -13,6 +14,15 @@
             "format": "kebab-case"
           }
         }
+      },
+      "security": {
+        "noConsoleLog": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "warn"
+      },
+      "a11y": {
+        "useAltText": "error"
       }
     }
   },
@@ -20,6 +30,20 @@
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 80
+    "lineWidth": 80,
+    "formatWithErrors": true,
+    "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    "javascript": {
+      "quoteStyle": "single",
+      "trailingComma": "es5",
+      "semicolons": "always"
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "es5",
+      "semicolons": "always"
+    }
   }
 }
